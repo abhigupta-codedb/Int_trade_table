@@ -5,7 +5,7 @@ const CircleRating = ({
   totalCircles = 10,
   size = 20,
   filledColor = "#3498db",
-  emptyColor = "#e0e0e0",
+  emptyColor = "white",
 }) => {
   // Calculate full circles and percentage fill for the last circle
   const fullCircles = Math.floor(value);
@@ -56,6 +56,7 @@ const CircleRating = ({
             cy={i + 1 > 5 ? size / 2 + size + 5 : size / 2}
             r={size / 2}
             fill={gradFill}
+            stroke="lightgray"
           />
         </svg>
       );
@@ -74,6 +75,7 @@ const CircleRating = ({
           cy={i >= 5 ? size / 2 + size + 5 : size / 2}
           r={size / 2}
           fill={emptyColor}
+          stroke="lightgray"
         />
       );
     }
