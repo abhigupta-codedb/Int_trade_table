@@ -14,47 +14,31 @@ const DataTable = ({ intData }) => {
   const clickCount = useRef(0);
 
   useEffect(() => {
-    const updatedData = intData.map((data) => {
-      const newData = { ...data };
-      for (const key in newData) {
-        if (
-          (key === "regFramework" ||
-            key === "publicService" ||
-            key === "operEfficiency") &&
-          !availCoulmns.includes(key)
-        ) {
-          delete newData[key];
-        }
-      }
-      return newData;
-    });
-    setTableData(updatedData);
-  }, [availCoulmns, intData]);
+    setTableData(intData);
+  }, [intData]);
 
-  // Sorting function
   const sortTable = (key) => {
     let sortedData = [...tableData];
     if (sortConfig?.key === key && sortConfig?.direction === "ascending") {
       sortedData.reverse();
       setSortConfig({ key, direction: "descending" });
     } else {
-      sortedData.sort((a, b) => (a[key] > b[key] ? 1 : -1));
+      sortedData.sort((a, b) => (Number(a[key]) > Number(b[key]) ? 1 : -1));
       setSortConfig({ key, direction: "ascending" });
     }
     setTableData(sortedData);
   };
 
-  function handleClick(columnName) {
+  const handleClick = (columnName) => {
     clickCount.current += 1;
     if (clickCount.current === 1) {
-      const newColumns = availCoulmns.filter((colms) => colms === columnName);
       if (
         availCoulmns.includes("Region") ||
         availCoulmns.includes("IncomeGroup")
       ) {
         handleShowHideButton();
       }
-      setAvailColumns(newColumns);
+      setAvailColumns([columnName]);
     } else if (clickCount.current === 3) {
       setAvailColumns((colms) =>
         Array.from(
@@ -64,9 +48,9 @@ const DataTable = ({ intData }) => {
       clickCount.current = 0;
     }
     sortTable(columnName);
-  }
+  };
 
-  function handleShowHideButton() {
+  const handleShowHideButton = () => {
     if (
       availCoulmns.includes("Region") ||
       availCoulmns.includes("IncomeGroup")
@@ -79,7 +63,7 @@ const DataTable = ({ intData }) => {
       setAvailColumns((colms) => [...colms, "Region", "IncomeGroup"]);
     }
     setShowHiddenColumns(!showHiddenColumns);
-  }
+  };
 
   return (
     <div>
@@ -140,7 +124,7 @@ const DataTable = ({ intData }) => {
                   <td>{row.Region}</td>
                 )}
                 {showHiddenColumns && availCoulmns.includes("IncomeGroup") && (
-                  <td>{row.IncomeGroup}</td>
+                  <td>{row.IncomeGroup}$</td>
                 )}
               </tr>
             ))}

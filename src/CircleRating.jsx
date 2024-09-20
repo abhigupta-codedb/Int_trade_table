@@ -62,7 +62,11 @@ const CircleRating = ({
     }
 
     // Render the remaining empty circles
-    for (let i = fullCircles + 1; i < totalCircles; i++) {
+    for (
+      let i = lastCircleFill === 0 ? fullCircles : fullCircles + 1;
+      i < totalCircles;
+      i++
+    ) {
       circles.push(
         <circle
           key={i}
