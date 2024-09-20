@@ -3,9 +3,9 @@ import React from "react";
 const CircleRating = ({
   value,
   totalCircles = 10,
-  size = 20,
+  size = 21,
   filledColor = "#3498db",
-  emptyColor = "white",
+  emptyColor = "transparent",
 }) => {
   // Calculate full circles and percentage fill for the last circle
   const fullCircles = Math.floor(value);
