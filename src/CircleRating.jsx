@@ -20,7 +20,7 @@ const CircleRating = ({
       circles.push(
         <circle
           key={i}
-          cx={i >= 5 ? size * (i - 5 + 1) : size * (i + 1)}
+          cx={i >= 5 ? (size + 5) * (i - 4) : (size + 5) * (i + 1)}
           cy={i >= 5 ? size / 2 + size + 5 : size / 2}
           r={size / 2}
           fill={filledColor}
@@ -52,7 +52,7 @@ const CircleRating = ({
           </defs>
           <circle
             key={fullCircles}
-            cx={i >= 5 ? size * (i - 5 + 1) : size * (i + 1)}
+            cx={i >= 5 ? (size + 5) * (i - 4) : (size + 5) * (i + 1)}
             cy={i + 1 > 5 ? size / 2 + size + 5 : size / 2}
             r={size / 2}
             fill={gradFill}
@@ -70,7 +70,7 @@ const CircleRating = ({
       circles.push(
         <circle
           key={i}
-          cx={i >= 5 ? size * (i - 5 + 1) : size * (i + 1)}
+          cx={i >= 5 ? (size + 5) * (i - 4) : (size + 5) * (i + 1)}
           cy={i >= 5 ? size / 2 + size + 5 : size / 2}
           r={size / 2}
           fill={emptyColor}

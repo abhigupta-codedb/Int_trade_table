@@ -23,7 +23,7 @@ const DataTable = ({ intData }) => {
       sortedData.reverse();
       setSortConfig({ key, direction: "descending" });
     } else {
-      sortedData.sort((a, b) => (Number(a[key]) > Number(b[key]) ? 1 : -1));
+      sortedData.sort((a, b) => (a[key] > b[key] ? 1 : -1));
       setSortConfig({ key, direction: "ascending" });
     }
     setTableData(sortedData);
