@@ -1,0 +1,51 @@
+export const pillarData = [
+  {
+    economy: "India",
+    topics: {
+      topic_1: 61,
+      topic_2: 25,
+      topic_3: 20,
+      topic_4: 90,
+      topic_5: 70,
+      topic_6: 36,
+      topic_7: 37,
+      topic_8: 48,
+      topic_9: 58,
+      topic_10: 100,
+    },
+
+    score: 72,
+  },
+  {
+    economy: "USA",
+    topics: {
+      topic_1: 34,
+      topic_2: 56,
+      topic_3: 60,
+      topic_4: 60,
+      topic_5: 55,
+      topic_6: 53,
+      topic_7: 59,
+      topic_8: 62,
+      topic_9: 79,
+      topic_10: 40,
+    },
+    score: 89,
+  },
+  {
+    economy: "China",
+    topics: {
+      topic_1: 85,
+      topic_2: 20,
+      topic_3: 100,
+      topic_4: 23,
+      topic_5: 19,
+      topic_6: 73,
+      topic_7: 39,
+      topic_8: 52,
+      topic_9: 45,
+      topic_10: 20,
+    },
+    score: 67,
+  },
+];
