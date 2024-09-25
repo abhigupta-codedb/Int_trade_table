@@ -38,6 +38,7 @@ const SingleCircle = ({
           fill={gradFill}
           stroke="lightgray"
         />
+        <title>{`Value: ${value}`}</title>
       </svg>
     );
 

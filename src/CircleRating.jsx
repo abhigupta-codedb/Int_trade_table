@@ -86,6 +86,7 @@ const CircleRating = ({
   return (
     <svg height="50" width={size * 10}>
       {renderCircles()}
+      <title>{`Value: ${Math.round(value * 10)}`}</title>
     </svg>
   );
 };
