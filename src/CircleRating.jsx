@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CircleRating = ({
   value,
@@ -10,6 +10,7 @@ const CircleRating = ({
   // Calculate full circles and percentage fill for the last circle
   const fullCircles = Math.floor(value);
   const lastCircleFill = value - fullCircles; // Fractional part for the partially filled circle
+  const [hovered, setHovered] = useState(false);
 
   const renderCircles = () => {
     let circles = [];
@@ -84,10 +85,20 @@ const CircleRating = ({
   };
 
   return (
-    <svg height="50" width={size * 10}>
-      {renderCircles()}
-      <title>{`Value: ${Math.round(value * 10)}`}</title>
-    </svg>
+    <div>
+      <svg
+        height="50"
+        width={size * 10}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {renderCircles()}
+      </svg>
+      {hovered && (
+        <div className="custom-tooltip">Value: {Math.round(value * 10)}</div>
+      )}
+      <Tooltip place="top" type="dark" effect="float" />
+    </div>
   );
 };
 

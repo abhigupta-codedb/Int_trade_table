@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 const SingleCircle = ({
   value,
@@ -6,14 +7,20 @@ const SingleCircle = ({
   filledColor = "#3498db",
   emptyColor = "white",
 }) => {
-  const renderCircles = () => {
-    let circles = [];
+  const [hovered, setHovered] = useState(false);
 
+  const renderCircles = () => {
     // Render the partially filled circle.
     const grad_id = `gradientFill-${value}`;
     const gradFill = `url(#${grad_id})`;
-    circles.push(
-      <svg>
+
+    return (
+      <svg
+        height={25}
+        width={25}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         <defs>
           <linearGradient id={grad_id} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color={filledColor} />
@@ -38,17 +45,15 @@ const SingleCircle = ({
           fill={gradFill}
           stroke="lightgray"
         />
-        <title>{`Value: ${value}`}</title>
       </svg>
     );
-
-    return circles;
   };
 
   return (
-    <svg height={25} width={25}>
+    <div>
       {renderCircles()}
-    </svg>
+      {hovered && <div className="custom-tooltip">Value: {value}</div>}
+    </div>
   );
 };
 
